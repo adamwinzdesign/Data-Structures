@@ -17,19 +17,10 @@ class LinkedList:
     self.head = Node(value)
     self.tail = self.head
     self.size = 1
-  # def __str__(self):
-  #   if self.is_empty():
-  #     return '[]'
-  #   string = '['
-  #   current_node = self.head
-  #   while current_node.next != None:
-  #     string += str(current_node.value) + ', '
-  #     current_node = current_node.next
-  #   string += str(current_node.value) + ']'
-  #   return string
   def is_empty(self):
     return self.head == None
   def add_to_tail(self, value):
+    # set head and tail to Node value if list is empty
     if self.is_empty():
       self.head = Node(value)
       self.tail = self.head
@@ -56,26 +47,10 @@ class LinkedList:
     new_node.next = head
     self.head = new_node
     self.size += 1
-  def add_at_index(self, index, value):
-    if index == 0:
-      self.prepend(value)
-    elif index >= self.size:
-      raise Exception('Sorry, an item with that index does not exist.')
-    elif index == self.size - 1:
-      self.add_to_tail(value)
-    new_node = Node(value)
-    current_index = 1
-    current_node = self.head
-    while current_index != index:
-      current_node = current_node.next
-      current_index += 1
-    new_node.next = current_node.next
-    current_node.next = new_node
-    self.size += 1
-    return True
   def remove(self, value):
     if self.is_empty():
       raise Exception('Nothing to remove, list is already empty!')
+    # if removed value is the head, set head to the next node
     if self.head.value == value:
       self.head = self.head.next
       self.size -= 1

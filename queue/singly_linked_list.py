@@ -55,23 +55,6 @@ class LinkedList:
     new_node.next = head
     self.head = new_node
     self.size += 1
-  def add_at_index(self, index, value):
-    if index == 0:
-      self.prepend(value)
-    elif index >= self.size:
-      raise Exception('Sorry, an item with that index does not exist.')
-    elif index == self.size - 1:
-      self.add_to_tail(value)
-    new_node = Node(value)
-    current_index = 1
-    current_node = self.head
-    while current_index != index:
-      current_node = current_node.next
-      current_index += 1
-    new_node.next = current_node.next
-    current_node.next = new_node
-    self.size += 1
-    return True
   def remove(self, value):
     if self.is_empty():
       raise Exception('Nothing to remove, list is already empty!')
